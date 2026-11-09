@@ -536,8 +536,8 @@
      아래 두 값만 채우면 모든 친구가 같은 랭킹을 봄 (비워 두면 이 기기 랭킹만 사용)
      - anon public key 는 웹페이지에 넣도록 만든 공개용 키 (service_role 키는 절대 넣지 말 것)
      - Supabase 쪽 표/함수 만들기 SQL 은 README.md 참고 */
-  const SUPABASE_URL = '';       // 예: 'https://abcdefgh.supabase.co'
-  const SUPABASE_ANON_KEY = '';  // 예: 'eyJhbGciOi...'
+  const SUPABASE_URL = 'https://bxozanljxqilfifwnbpd.supabase.co';
+  const SUPABASE_ANON_KEY = 'sb_publishable_kX7yTZRdcbAmNjwLqtF4LQ_9e4k4JZX'; // 공개용 키(웹페이지에 넣어도 되는 키)
 
   async function sbFetch(path, init = {}) {
     const ctl = new AbortController();
@@ -545,7 +545,7 @@
     try {
       const r = await fetch(SUPABASE_URL.replace(/\/$/, '') + path, {
         ...init, signal: ctl.signal,
-        headers: { apikey: SUPABASE_ANON_KEY, Authorization: 'Bearer ' + SUPABASE_ANON_KEY, 'Content-Type': 'application/json' },
+        headers: { apikey: SUPABASE_ANON_KEY, 'Content-Type': 'application/json', ...(SUPABASE_ANON_KEY.startsWith('eyJ') ? { Authorization: 'Bearer ' + SUPABASE_ANON_KEY } : {}) },
       });
       if (!r.ok) throw new Error('Supabase ' + r.status);
       return await r.json();

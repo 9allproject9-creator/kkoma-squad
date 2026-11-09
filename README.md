@@ -6,7 +6,7 @@
 
 1. https://supabase.com 에서 무료 프로젝트를 만듭니다.
 2. **SQL Editor**에서 아래 SQL을 실행합니다.
-3. `index.html`의 `SUPABASE_URL`, `SUPABASE_ANON_KEY` 두 값을 채웁니다.
+3. `index.html`의 `SUPABASE_URL`, `SUPABASE_ANON_KEY` 두 값을 채웁니다. (이 저장소는 이미 연결되어 있음)
    (Project Settings → API의 Project URL과 anon public key. service_role 키는 절대 넣지 마세요.)
 
 ```sql
